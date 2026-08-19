@@ -312,11 +312,14 @@ with col1:
         titulo_style + "Ingresos Brutos Anuales</div>",
         unsafe_allow_html=True
     )
+
     ingresos = st.number_input(
         "Ingresos",
+        min_value=0.0,
+        step=1_000_000.0,
+        format="%.0f",
         label_visibility="collapsed"
     )
-
 with col2:
     st.markdown(
         titulo_style + "Activos Totales</div>",
@@ -324,6 +327,9 @@ with col2:
     )
     activos = st.number_input(
         "Activos",
+        min_value=0.0,
+        step=1_000_000.0,
+        format="%.0f",
         label_visibility="collapsed"
     )
 
@@ -334,6 +340,9 @@ with col3:
     )
     monto_credito = st.number_input(
         "Monto",
+        min_value=0.0,
+        step=1_000_000.0,
+        format="%.0f",
         label_visibility="collapsed"
     )
 
