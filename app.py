@@ -60,7 +60,7 @@ with col2:
             Calculadora Activos e Ingresos FINAGRO 2026
         </h1>
         <div class="sub-title">
-            📊 Actualizado con UVB 2026
+            ⚠️ Este calculo es indicativo y no obliga a ninguna entidad a que se obtenga el mismo resultado cuando se registre el crédito.
         </div>
         """,
         unsafe_allow_html=True
