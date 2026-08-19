@@ -254,12 +254,24 @@ condiciones = pd.DataFrame(
     ]
 )
 
-st.dataframe(
-    condiciones,
-    use_container_width=True,
-    hide_index=True
-)
-
+for _, row in condiciones.iterrows():
+    st.markdown(
+        f"""
+        <div style="
+            padding:15px;
+            border-radius:10px;
+            border:1px solid #ddd;
+            margin-bottom:10px;
+            font-size:20px;
+        ">
+            <b>{row['Clasificación']}</b><br>
+            Ingresos: {row['Ingresos']}<br>
+            Activos: {row['Activos']}<br>
+            Crédito: {row['Monto Crédito']}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # ----------------------------------------------------
 # Calculadora
