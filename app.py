@@ -314,10 +314,11 @@ st.markdown("""
 
 titulo_style = """
 <div style="
-    font-size:16px;
+    font-size:18px;
     font-weight:600;
     height:40px;
     display:flex;
+    font-weight: bold;
     align-items:flex-end;
 ">
 """
