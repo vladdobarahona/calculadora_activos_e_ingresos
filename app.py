@@ -465,35 +465,66 @@ with st.container(border=True):
         )
 
     st.markdown("<br>", unsafe_allow_html=True)
-
+    # ----------------------------------------------------
+    # Resultado de la clasificación
+    # ----------------------------------------------------
+    st.markdown("""
+    <style>
+    
+    .resultado-card {
+        background-color: #eef7ec;
+        border-left: 8px solid rgb(120,154,61);
+        border-radius: 12px;
+        padding: 25px;
+        margin-top: 20px;
+    }
+    
+    .resultado-titulo {
+        font-size: 36px;
+        font-weight: 700;
+        color: rgb(120,154,61);
+        margin-bottom: 15px;
+    }
+    
+    .resultado-info {
+        font-size: 22px;
+        font-weight: 600;
+        color: #002646;
+        line-height: 2;
+    }
+    
+    </style>
+    """, unsafe_allow_html=True)
+    
     if st.button(
         "🚀 CLASIFICAR PRODUCTOR",
         use_container_width=True
     ):
-
+    
         monto = None if monto_credito == 0 else monto_credito
-
+    
         resultado = clasificar_productor(
             ingresos,
             activos,
             monto
         )
-
+    
         st.markdown(
             f"""
-            <div class="resultado-clasificacion">
-
+            <div class="resultado-card">
+    
                 <div class="resultado-titulo">
                     ✅ {resultado}
                 </div>
-
-                <div class="resultado-detalle">
+    
+                <div class="resultado-info">
                     💰 Ingresos: ${ingresos:,.0f}<br>
                     🏦 Activos: ${activos:,.0f}<br>
                     📋 Monto crédito: ${monto_credito:,.0f}
                 </div>
-
+    
             </div>
             """,
             unsafe_allow_html=True
         )
+    
