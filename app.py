@@ -199,6 +199,25 @@ monto_alto_Mipymes_rurales = 2968 * uvb
 # ----------------------------------------------------
 # Condiciones
 # ----------------------------------------------------
+st.markdown("""
+<style>
+.reglas table {
+    font-size: 20px;
+    width: 100%;
+}
+
+.reglas th {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.reglas td {
+    padding: 12px;
+}
+</style>
+""", unsafe_allow_html=True)
+
 st.subheader("Reglas de Clasificación")
 
 condiciones = pd.DataFrame(
@@ -254,25 +273,14 @@ condiciones = pd.DataFrame(
     ]
 )
 
-for _, row in condiciones.iterrows():
-    st.markdown(
-        f"""
-        <div style="
-            padding:15px;
-            border-radius:10px;
-            border:1px solid #ddd;
-            margin-bottom:10px;
-            font-size:20px;
-        ">
-            <b>{row['Clasificación']}</b><br>
-            Ingresos: {row['Ingresos']}<br>
-            Activos: {row['Activos']}<br>
-            Crédito: {row['Monto Crédito']}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
+st.markdown(
+    f"""
+    <div class="reglas">
+        {condiciones.to_html(index=False)}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 # ----------------------------------------------------
 # Calculadora
 # ----------------------------------------------------
