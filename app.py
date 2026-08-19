@@ -323,6 +323,15 @@ titulo_style = """
 ">
 """
 
+st.markdown("""
+<div style="
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    margin-bottom:20px;
+">
+""", unsafe_allow_html=True)
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
