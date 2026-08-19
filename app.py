@@ -349,7 +349,7 @@ with col1:
         margin-top:5px;
         color:#002646;
     ">
-        Valor: ${ingresos:,.0f}
+        Ingresos: ${ingresos:,.0f}
     </div>
     """,
     unsafe_allow_html=True
@@ -375,7 +375,7 @@ with col2:
         margin-top:5px;
         color:#002646;
     ">
-        Valor: ${activos:,.0f}
+        Activos: ${activos:,.0f}
     </div>
     """,
     unsafe_allow_html=True
@@ -402,7 +402,7 @@ with col3:
         margin-top:5px;
         color:#002646;
     ">
-        Valor: ${monto_credito:,.0f}
+        Monto crédito: ${monto_credito:,.0f}
     </div>
     """,
     unsafe_allow_html=True
