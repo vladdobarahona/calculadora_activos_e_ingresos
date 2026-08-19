@@ -14,9 +14,11 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+
 # ==============================
 # Estilos personalizados
 # ==============================
+
 st.markdown("""
 <style>
     /* Fondo de toda la aplicación */
@@ -48,6 +50,26 @@ st.markdown("""
     body {
         background-color: rgb(171,190,76) !important;
     }
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+div.stButton > button {
+    background-color: rgb(120,154,61);
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    height: 60px;
+    padding: 0px 30px;
+    border-radius: 10px;
+    border: none;
+}
+
+div.stButton > button:hover {
+    background-color: rgb(100,134,41);
+    color: white;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -409,8 +431,8 @@ with col3:
     )
 
 
-if st.button("Clasificar"):
-
+#if st.button("Clasificar"):
+if st.button("Clasificar",use_container_width=True):
     monto = (
         None
         if monto_credito == 0
