@@ -169,7 +169,7 @@ def obtener_uvb():
             "uvb": 12110,
             "resolution": "No fue obtenida de la página web",
             "resolution_title": "No fue obtenida de la página web",
-            "resolution_url": "",
+            "resolution_url": "https://www.minhacienda.gov.co/normativa/resoluciones-y-circulares/2025/-/document_library/rcan/view_file/2986275",
             "origen": "No fue obtenida de la página web",
             "error": str(e)
         }
