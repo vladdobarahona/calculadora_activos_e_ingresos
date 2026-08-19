@@ -99,47 +99,80 @@ with col2:
 
 def obtener_uvb():
 
-    url = "https://uvb.com.co/"
+    try:
 
-    headers = {
-        "User-Agent": "Mozilla/5.0"
-    }
+        url = "https://uvb.com.co/"
 
-    response = requests.get(url, headers=headers, timeout=30)
-    response.raise_for_status()
+        headers = {
+            "User-Agent": "Mozilla/5.0"
+        }
 
-    soup = BeautifulSoup(response.text, "html.parser")
+        response = requests.get(
+            url,
+            headers=headers,
+            timeout=30
+        )
 
-    container = soup.select_one(
-        "#genesis-content article > div > div:nth-of-type(1) > div:nth-of-type(1)"
-    )
+        response.raise_for_status()
 
-    if not container:
-        raise Exception("No fue posible localizar el contenedor UVB")
+        soup = BeautifulSoup(
+            response.text,
+            "html.parser"
+        )
 
-    texto = container.get_text("\n", strip=True)
+        container = soup.select_one(
+            "#genesis-content article > div > div:nth-of-type(1) > div:nth-of-type(1)"
+        )
 
-    parts = texto.split("\n")
+        if not container:
+            raise ValueError(
+                "No fue posible localizar el contenedor UVB"
+            )
 
-    title = parts[0] if len(parts) > 0 else ""
-    value = parts[1] if len(parts) > 1 else ""
-    resolution = parts[2] if len(parts) > 2 else ""
+        texto = container.get_text("\n", strip=True)
 
-    uvb = int(re.sub(r"\D", "", value))
+        parts = texto.split("\n")
 
-    link = container.find("a")
+        title = parts[0] if len(parts) > 0 else ""
+        value = parts[1] if len(parts) > 1 else ""
+        resolution = parts[2] if len(parts) > 2 else ""
 
-    resolution_title = link.get_text(strip=True) if link else resolution
-    resolution_url = link.get("href") if link else ""
+        uvb = int(re.sub(r"\D", "", value))
 
-    return {
-        "title": title,
-        "value": value,
-        "uvb": uvb,
-        "resolution": resolution,
-        "resolution_title": resolution_title,
-        "resolution_url": resolution_url,
-    }
+        link = container.find("a")
+
+        resolution_title = (
+            link.get_text(strip=True)
+            if link else resolution
+        )
+
+        resolution_url = (
+            link.get("href")
+            if link else ""
+        )
+
+        return {
+            "title": title,
+            "value": value,
+            "uvb": uvb,
+            "resolution": resolution,
+            "resolution_title": resolution_title,
+            "resolution_url": resolution_url,
+            "origen": "Página web UVB"
+        }
+
+    except Exception as e:
+
+        return {
+            "title": "Valor UVB 2026 Colombia",
+            "value": "$12.110",
+            "uvb": 12110,
+            "resolution": "No fue obtenida de la página web",
+            "resolution_title": "No fue obtenida de la página web",
+            "resolution_url": "",
+            "origen": "No fue obtenida de la página web",
+            "error": str(e)
+        }
 
 # ----------------------------------------------------
 # Clasificación
@@ -209,6 +242,12 @@ def clasificar_productor(
 
 
 data = obtener_uvb()
+
+if data["origen"] != "Página web UVB":
+    st.warning(
+        f"⚠️ Se utilizó el valor UVB por defecto ({data['uvb']:,}). "
+        "La información no fue obtenida de la página web."
+    )
 
 st.success(f"Vigencia: {data['title']}")
 
