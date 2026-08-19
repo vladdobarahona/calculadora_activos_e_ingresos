@@ -1,58 +1,51 @@
-import streamlit as st
-import pandas as pd
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
+import requests
+from bs4 import BeautifulSoup
+import re
 
 
-# ----------------------------------------------------
-# Obtener UVB vigente
-# ----------------------------------------------------
-@st.cache_data(ttl=86400)
 def obtener_uvb():
 
-    options = Options()
-    options.add_argument("--headless=new")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--no-sandbox")
+    url = "https://uvb.com.co/"
 
-    driver = webdriver.Chrome(options=options)
+    headers = {
+        "User-Agent": "Mozilla/5.0"
+    }
 
-    try:
-        driver.get("https://uvb.com.co/")
-        driver.implicitly_wait(10)
+    response = requests.get(url, headers=headers, timeout=30)
+    response.raise_for_status()
 
-        container = driver.find_element(
-            By.XPATH,
-            '//*[@id="genesis-content"]/article/div/div[1]/div[1]'
-        )
+    soup = BeautifulSoup(response.text, "html.parser")
 
-        parts = container.text.split("\n")
+    container = soup.select_one(
+        "#genesis-content article > div > div:nth-of-type(1) > div:nth-of-type(1)"
+    )
 
-        title = parts[0] if len(parts) > 0 else ""
-        value = parts[1] if len(parts) > 1 else ""
-        resolution = parts[2] if len(parts) > 2 else ""
+    if not container:
+        raise Exception("No fue posible localizar el contenedor UVB")
 
-        uvb = int(''.join(filter(str.isdigit, value)))
+    texto = container.get_text("\n", strip=True)
 
-        link_element = container.find_element(By.TAG_NAME, "a")
+    parts = texto.split("\n")
 
-        resolution_title = link_element.text
-        resolution_url = link_element.get_attribute("href")
+    title = parts[0] if len(parts) > 0 else ""
+    value = parts[1] if len(parts) > 1 else ""
+    resolution = parts[2] if len(parts) > 2 else ""
 
-        return {
-            "title": title,
-            "value": value,
-            "uvb": uvb,
-            "resolution": resolution,
-            "resolution_title": resolution_title,
-            "resolution_url": resolution_url
-        }
+    uvb = int(re.sub(r"\D", "", value))
 
-    finally:
-        driver.quit()
+    link = container.find("a")
 
+    resolution_title = link.get_text(strip=True) if link else resolution
+    resolution_url = link.get("href") if link else ""
+
+    return {
+        "title": title,
+        "value": value,
+        "uvb": uvb,
+        "resolution": resolution,
+        "resolution_title": resolution_title,
+        "resolution_url": resolution_url,
+    }
 
 # ----------------------------------------------------
 # Clasificación
