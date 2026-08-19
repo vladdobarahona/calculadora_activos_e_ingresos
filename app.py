@@ -282,7 +282,14 @@ condiciones = pd.DataFrame(
     ]
 )
 
-st.subheader("📋 Reglas de Clasificación")
+st.markdown("""
+<h1 style="
+    font-size:42px;
+    color:#edb946;
+">
+📋 Reglas de Clasificación
+</h1>
+""", unsafe_allow_html=True)
 
 st.markdown(
     f"""
