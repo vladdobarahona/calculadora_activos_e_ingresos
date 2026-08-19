@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import streamlit as st
+import pandas as pd 
 
 def obtener_uvb():
 
