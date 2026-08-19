@@ -320,6 +320,9 @@ with col1:
         format="%.0f",
         label_visibility="collapsed"
     )
+    st.markdown(
+    f"**Valor:** ${ingresos:,.0f}"
+    )
 with col2:
     st.markdown(
         titulo_style + "Activos Totales</div>",
@@ -332,7 +335,9 @@ with col2:
         format="%.0f",
         label_visibility="collapsed"
     )
-
+    st.markdown(
+    f"**Valor:** ${activos:,.0f}"
+    )
 with col3:
     st.markdown(
         titulo_style + "Monto Crédito (Opcional)</div>",
@@ -344,6 +349,10 @@ with col3:
         step=1_000_000.0,
         format="%.0f",
         label_visibility="collapsed"
+    )
+
+    st.markdown(
+    f"**Valor:** ${monto_credito:,.0f}"
     )
 
 if st.button("Clasificar"):
