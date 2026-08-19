@@ -284,7 +284,7 @@ condiciones = pd.DataFrame(
 
 st.markdown("""
 <h1 style="
-    font-size:42px;
+    font-size:38px;
     color:#edb946;
 ">
 📋 Reglas de Clasificación
@@ -304,7 +304,7 @@ st.markdown(
 # ----------------------------------------------------
 st.markdown("""
 <h1 style="
-    font-size:42px;
+    font-size:38px;
     color:#edb946;
 ">
 🧮 Calculadora
