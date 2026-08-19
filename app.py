@@ -149,18 +149,45 @@ def clasificar_productor(
         activos_totales,
         monto_credito=None):
 
-    if ingresos_brutos_anuales <= ingreso_bajo and activos_totales <= activo_bajo:
+    # ----------------------------------------------------
+    # Clasificación exclusiva para MIPYMES Rurales
+    # ----------------------------------------------------
+    if monto_credito is not None:
+
+        if (
+            activos_totales <= activo_Mipymes_rurales
+            and ingresos_brutos_anuales <= ingreso_Mipymes_rurales
+            and monto_bajo_Mipymes_rurales < monto_credito < monto_alto_Mipymes_rurales
+        ):
+            return "MIPYMES Rurales Microempresa"
+
+        return "No clasificado"
+
+    # ----------------------------------------------------
+    # Clasificación tradicional
+    # ----------------------------------------------------
+    if (
+        ingresos_brutos_anuales <= ingreso_bajo
+        and activos_totales <= activo_bajo
+    ):
         return "Pequeño Productor de Ingresos Bajos"
 
-    elif ingreso_bajo < ingresos_brutos_anuales <= ingreso_medio and activos_totales <= activo_bajo:
+    elif (
+        ingreso_bajo < ingresos_brutos_anuales <= ingreso_medio
+        and activos_totales <= activo_bajo
+    ):
         return "Pequeño Productor"
 
     elif (
-        ingreso_medio < ingresos_brutos_anuales <= ingreso_alto
-        and activos_totales <= activo_medio
-    ) or (
-        ingresos_brutos_anuales <= ingreso_medio
-        and activo_bajo < activos_totales <= activo_medio
+        (
+            ingreso_medio < ingresos_brutos_anuales <= ingreso_alto
+            and activos_totales <= activo_medio
+        )
+        or
+        (
+            ingresos_brutos_anuales <= ingreso_medio
+            and activo_bajo < activos_totales <= activo_medio
+        )
     ):
         return "Mediano Productor"
 
@@ -172,14 +199,6 @@ def clasificar_productor(
         )
     ):
         return "Gran Productor"
-
-    elif (
-        monto_credito is not None
-        and activos_totales <= activo_Mipymes_rurales
-        and ingresos_brutos_anuales <= ingreso_Mipymes_rurales
-        and monto_bajo_Mipymes_rurales < monto_credito < monto_alto_Mipymes_rurales
-    ):
-        return "MIPYMES Rurales Microempresa"
 
     return "No clasificado"
 
