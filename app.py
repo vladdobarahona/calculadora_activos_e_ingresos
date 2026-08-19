@@ -308,21 +308,30 @@ titulo_style = """
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("##### **Ingresos Brutos Anuales**")
+    st.markdown(
+        titulo_style + "Ingresos Brutos Anuales</div>",
+        unsafe_allow_html=True
+    )
     ingresos = st.number_input(
         "Ingresos",
         label_visibility="collapsed"
     )
 
 with col2:
-    st.markdown("##### **Activos Totales**")
+    st.markdown(
+        titulo_style + "Activos Totales</div>",
+        unsafe_allow_html=True
+    )
     activos = st.number_input(
         "Activos",
         label_visibility="collapsed"
     )
 
 with col3:
-    st.markdown("##### **Monto Crédito (Opcional)**")
+    st.markdown(
+        titulo_style + "Monto Crédito (Opcional)</div>",
+        unsafe_allow_html=True
+    )
     monto_credito = st.number_input(
         "Monto",
         label_visibility="collapsed"
