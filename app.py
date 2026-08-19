@@ -313,15 +313,6 @@ st.markdown("""
 
 
 st.markdown("""
-<div style="
-    padding:15px;
-    border-radius:10px;
-    border:1px solid #ddd;
-    margin-bottom:20px;
-">
-""", unsafe_allow_html=True)
-
-st.markdown("""
 <style>
 div[data-testid="stNumberInput"] input {
     font-size: 20px !important;
