@@ -297,21 +297,21 @@ st.markdown("""
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown("#### **Ingresos Brutos Anuales**")
+    st.markdown("##### **Ingresos Brutos Anuales**")
     ingresos = st.number_input(
         "Ingresos",
         label_visibility="collapsed"
     )
 
 with col2:
-    st.markdown("#### **Activos Totales**")
+    st.markdown("##### **Activos Totales**")
     activos = st.number_input(
         "Activos",
         label_visibility="collapsed"
     )
 
 with col3:
-    st.markdown("#### **Monto Crédito (Opcional)**")
+    st.markdown("##### **Monto Crédito (Opcional)**")
     monto_credito = st.number_input(
         "Monto",
         label_visibility="collapsed"
