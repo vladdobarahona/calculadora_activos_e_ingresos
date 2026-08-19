@@ -285,7 +285,14 @@ st.markdown(
 # ----------------------------------------------------
 # Calculadora
 # ----------------------------------------------------
-st.subheader("Calculadora")
+st.markdown("""
+<h1 style="
+    font-size:42px;
+    color:#0068c9;
+">
+🧮 Calculadora
+</h1>
+""", unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 
