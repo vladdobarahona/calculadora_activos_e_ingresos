@@ -4,6 +4,69 @@ import re
 import streamlit as st
 import pandas as pd 
 
+# ==============================
+# Estilos personalizados
+# ==============================
+st.markdown("""
+<style>
+    /* Fondo de toda la aplicación */
+    .stApp {
+        background: #ffffff !important;
+        font-family: "Segoe UI", "Cochin bold", "Helvetica Neue", sans-serif;
+        padding-top: 20px;
+    }
+
+    /* Título principal */
+    .main-title {
+        color: rgb(120,154,61);
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-top: 15px;
+        margin-bottom: 0px;
+    }
+
+    /* Subtítulo */
+    .sub-title {
+        color: #4a4a4a;
+        font-size: 1.1rem;
+        margin-top: -5px;
+        margin-bottom: 25px;
+    }
+
+    /* Fondo general de la página (fuera del contenedor blanco) */
+    body {
+        background-color: rgb(171,190,76) !important;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+
+# ==============================
+# LOGO + TÍTULO
+# ==============================
+col1, col2 = st.columns([1, 3])
+
+with col1:
+    st.image(
+        "https://www.finagro.com.co/sites/default/files/logo-front-finagro.png",
+        width=180
+    )
+
+with col2:
+    st.markdown(
+        """
+        <h1 class="main-title">
+            Calculadora Activos e Ingresos FINAGRO 2026
+        </h1>
+        <div class="sub-title">
+            📊 Actualizado con UVB 2026
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
 def obtener_uvb():
 
     url = "https://uvb.com.co/"
@@ -94,12 +157,7 @@ def clasificar_productor(
 # ----------------------------------------------------
 # Interfaz
 # ----------------------------------------------------
-st.set_page_config(
-    page_title="Calculadora Activos e Ingresos Enterprise",
-    layout="wide"
-)
 
-st.title("📊 Calculadora de Activos e Ingresos Enterprise")
 
 data = obtener_uvb()
 
