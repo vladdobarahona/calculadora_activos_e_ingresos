@@ -323,6 +323,18 @@ st.markdown(
 # Calculadora
 # ----------------------------------------------------
 st.markdown("""
+<div style="
+    border:1px solid #d9d9d9;
+    border-radius:10px;
+    padding:20px;
+    margin-top:15px;
+    margin-bottom:15px;
+">
+""", unsafe_allow_html=True)
+
+
+
+st.markdown("""
 <h1 style="
     font-size:38px;
     color:#edb946;
@@ -449,5 +461,10 @@ if st.button(
     )
 
     st.success(
-        f"Clasificación obtenida: {resultado}"
+    f"Clasificación obtenida: {resultado} |"
+    f"Ingresos: ${ingresos:,.0f} | "
+    f"Activos: ${activos:,.0f} | "
+    f"Monto crédito: ${monto_credito:,.0f}"
     )
+
+st.markdown("</div>", unsafe_allow_html=True)
