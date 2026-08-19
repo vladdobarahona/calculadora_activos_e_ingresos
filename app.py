@@ -340,9 +340,21 @@ with col1:
         format="%.0f",
         label_visibility="collapsed"
     )
+
     st.markdown(
-    f"**Valor:** ${ingresos:,.0f}"
+    f"""
+    <div style="
+        font-size:16px;
+        font-weight:600;
+        margin-top:5px;
+        color:#31333F;
+    ">
+        Valor: ${ingresos:,.0f}
+    </div>
+    """,
+    unsafe_allow_html=True
     )
+
 with col2:
     st.markdown(
         '<div style="font-size:16px;font-weight:600;">Activos Totales</div>',
@@ -356,8 +368,19 @@ with col2:
         label_visibility="collapsed"
     )
     st.markdown(
-    f"**Valor:** ${activos:,.0f}"
+    f"""
+    <div style="
+        font-size:16px;
+        font-weight:600;
+        margin-top:5px;
+        color:#31333F;
+    ">
+        Valor: ${activos:,.0f}
+    </div>
+    """,
+    unsafe_allow_html=True
     )
+
 with col3:
     st.markdown(
         '<div style="font-size:16px;font-weight:600;">Monto Crédito (Opcional)</div>',
@@ -372,10 +395,19 @@ with col3:
     )
 
     st.markdown(
-    f"**Valor:** ${monto_credito:,.0f}"
+    f"""
+    <div style="
+        font-size:16px;
+        font-weight:600;
+        margin-top:5px;
+        color:#31333F;
+    ">
+        Valor: ${monto_credito:,.0f}
+    </div>
+    """,
+    unsafe_allow_html=True
     )
-
-st.markdown("</div>", unsafe_allow_html=True)
+#st.markdown("</div>", unsafe_allow_html=True)
 
 if st.button("Clasificar"):
 
