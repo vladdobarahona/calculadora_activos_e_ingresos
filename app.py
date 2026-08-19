@@ -3,7 +3,17 @@ from bs4 import BeautifulSoup
 import re
 import streamlit as st
 import pandas as pd 
+
 st.set_page_config(layout="wide")
+
+st.markdown("""
+<style>
+.block-container {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+</style>
+""", unsafe_allow_html=True)
 # ==============================
 # Estilos personalizados
 # ==============================
