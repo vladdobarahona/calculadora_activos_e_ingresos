@@ -321,6 +321,19 @@ st.markdown("""
 ">
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+div[data-testid="stNumberInput"] input {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}
+
+div[data-testid="stNumberInput"] button {
+    font-size: 20px !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
