@@ -304,7 +304,7 @@ with col1:
     )
 
 with col2:
-    st.markdown("##### **Activos Totales**")
+    st.markdown("##### **Activos Totales        **")
     activos = st.number_input(
         "Activos",
         label_visibility="collapsed"
