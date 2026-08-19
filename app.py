@@ -297,25 +297,24 @@ st.markdown("""
 col1, col2, col3 = st.columns(3)
 
 with col1:
+    st.markdown("### **Ingresos Brutos Anuales**")
     ingresos = st.number_input(
-        "Ingresos Brutos Anuales",
-        min_value=0.0,
-        step=1000000.0
+        "Ingresos",
+        label_visibility="collapsed"
     )
 
 with col2:
+    st.markdown("### **Activos Totales**")
     activos = st.number_input(
-        "Activos Totales",
-        min_value=0.0,
-        step=1000000.0
+        "Activos",
+        label_visibility="collapsed"
     )
 
 with col3:
+    st.markdown("### **Monto Crédito (Opcional)**")
     monto_credito = st.number_input(
-        "Monto Crédito (Opcional)",
-        min_value=0.0,
-        value=0.0,
-        step=1000000.0
+        "Monto",
+        label_visibility="collapsed"
     )
 
 if st.button("Clasificar"):
