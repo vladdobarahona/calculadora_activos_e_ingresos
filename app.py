@@ -319,35 +319,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-# ----------------------------------------------------
-# Estilo de la Calculadora
-# ----------------------------------------------------
-st.markdown("""
-<style>
 
-/* Valor principal dentro del input */
-div[data-testid="stNumberInput"] input {
-    font-size: 28px !important;
-    font-weight: 700 !important;
-    color: #002646 !important;
-}
-
-/* Botones + y - */
-div[data-testid="stNumberInput"] button {
-    font-size: 22px !important;
-    font-weight: bold !important;
-}
-
-/* Etiquetas de los campos */
-.label-calculadora {
-    font-size: 18px;
-    font-weight: 600;
-    color: rgb(120,154,61);
-    margin-bottom: 10px;
-}
-
-</style>
-""", unsafe_allow_html=True)
 
 # ----------------------------------------------------
 # Estilo de la Calculadora
