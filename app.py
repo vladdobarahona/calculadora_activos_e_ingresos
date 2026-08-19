@@ -288,7 +288,7 @@ st.markdown(
 st.markdown("""
 <h1 style="
     font-size:42px;
-    color:#0068c9;
+    color:#edb946;
 ">
 🧮 Calculadora
 </h1>
