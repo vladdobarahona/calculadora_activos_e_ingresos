@@ -312,17 +312,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-titulo_style = """
-<div style="
-    font-size:18px;
-    font-weight:600;
-    height:40px;
-    display:flex;
-    font-weight: bold;
-    align-items:flex-end;
-">
-"""
-
 st.markdown("""
 <div style="
     padding:15px;
@@ -335,11 +324,11 @@ st.markdown("""
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.markdown(
-        titulo_style + "Ingresos Brutos Anuales</div>",
-        unsafe_allow_html=True
-    )
 
+    st.markdown(
+    '<div style="font-size:16px;font-weight:600;">Ingresos Brutos Anuales</div>',
+    unsafe_allow_html=True
+    )
     ingresos = st.number_input(
         "Ingresos",
         min_value=0.0,
@@ -352,7 +341,7 @@ with col1:
     )
 with col2:
     st.markdown(
-        titulo_style + "Activos Totales</div>",
+        '<div style="font-size:16px;font-weight:600;">Activos Totales</div>',
         unsafe_allow_html=True
     )
     activos = st.number_input(
@@ -367,7 +356,7 @@ with col2:
     )
 with col3:
     st.markdown(
-        titulo_style + "Monto Crédito (Opcional)</div>",
+        '<div style="font-size:16px;font-weight:600;">Monto Crédito (Opcional)</div>',
         unsafe_allow_html=True
     )
     monto_credito = st.number_input(
