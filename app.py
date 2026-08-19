@@ -371,6 +371,8 @@ with col3:
     f"**Valor:** ${monto_credito:,.0f}"
     )
 
+st.markdown("</div>", unsafe_allow_html=True)
+
 if st.button("Clasificar"):
 
     monto = (
