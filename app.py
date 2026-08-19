@@ -350,6 +350,59 @@ div[data-testid="stNumberInput"] button {
 """, unsafe_allow_html=True)
 
 # ----------------------------------------------------
+# Estilo de la Calculadora
+# ----------------------------------------------------
+st.markdown("""
+<style>
+
+/* Valor principal dentro del input */
+div[data-testid="stNumberInput"] input {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #002646 !important;
+}
+
+/* Botones + y - */
+div[data-testid="stNumberInput"] button {
+    font-size: 22px !important;
+    font-weight: bold !important;
+}
+
+/* Etiquetas */
+.label-calculadora {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(120,154,61);
+    margin-bottom: 10px;
+}
+
+/* Tarjeta resultado */
+.resultado-clasificacion {
+    background-color: #eef7ec;
+    border-left: 8px solid rgb(120,154,61);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.resultado-titulo {
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(120,154,61);
+    margin-bottom: 10px;
+}
+
+.resultado-detalle {
+    font-size: 18px;
+    color: #002646;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+# ----------------------------------------------------
 # Tarjeta de la Calculadora
 # ----------------------------------------------------
 with st.container(border=True):
@@ -426,12 +479,21 @@ with st.container(border=True):
             monto
         )
 
-        st.success(
+        st.markdown(
             f"""
-Clasificación obtenida: {resultado}
+            <div class="resultado-clasificacion">
 
-💰 Ingresos: ${ingresos:,.0f}
-🏦 Activos: ${activos:,.0f}
-📋 Monto crédito: ${monto_credito:,.0f}
-"""
+                <div class="resultado-titulo">
+                    ✅ {resultado}
+                </div>
+
+                <div class="resultado-detalle">
+                    💰 Ingresos: ${ingresos:,.0f}<br>
+                    🏦 Activos: ${activos:,.0f}<br>
+                    📋 Monto crédito: ${monto_credito:,.0f}
+                </div>
+
+            </div>
+            """,
+            unsafe_allow_html=True
         )
