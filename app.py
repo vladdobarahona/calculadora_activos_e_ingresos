@@ -440,6 +440,8 @@ with col3:
     unsafe_allow_html=True
     )
 
+st.markdown("</div>", unsafe_allow_html=True)
+
 st.markdown("<br><br>", unsafe_allow_html=True)
 
 #if st.button("Clasificar"):
@@ -467,4 +469,3 @@ if st.button(
     f"Monto crédito: ${monto_credito:,.0f}"
     )
 
-st.markdown("</div>", unsafe_allow_html=True)
