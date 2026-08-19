@@ -294,6 +294,17 @@ st.markdown("""
 </h1>
 """, unsafe_allow_html=True)
 
+
+titulo_style = """
+<div style="
+    font-size:16px;
+    font-weight:600;
+    height:40px;
+    display:flex;
+    align-items:flex-end;
+">
+"""
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -304,7 +315,7 @@ with col1:
     )
 
 with col2:
-    st.markdown("##### **Activos Totales        **")
+    st.markdown("##### **Activos Totales**")
     activos = st.number_input(
         "Activos",
         label_visibility="collapsed"
