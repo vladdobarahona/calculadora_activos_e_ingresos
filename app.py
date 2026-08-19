@@ -347,7 +347,7 @@ with col1:
         font-size:16px;
         font-weight:600;
         margin-top:5px;
-        color:#31333F;
+        color:#002646;
     ">
         Valor: ${ingresos:,.0f}
     </div>
@@ -373,7 +373,7 @@ with col2:
         font-size:16px;
         font-weight:600;
         margin-top:5px;
-        color:#31333F;
+        color:#002646;
     ">
         Valor: ${activos:,.0f}
     </div>
@@ -400,14 +400,14 @@ with col3:
         font-size:16px;
         font-weight:600;
         margin-top:5px;
-        color:#31333F;
+        color:#002646;
     ">
         Valor: ${monto_credito:,.0f}
     </div>
     """,
     unsafe_allow_html=True
     )
-st.markdown("</div>", unsafe_allow_html=True)
+
 
 if st.button("Clasificar"):
 
