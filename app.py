@@ -452,21 +452,24 @@ with st.container(border=True):
             monto
         )
 
-        st.markdown(
-            f"""
-            <div class="resultado-card">
+        st.success(f"✅ {resultado}")
 
-                <div class="resultado-titulo">
-                    ✅ {resultado}
-                </div>
-
-                <div class="resultado-info">
-                    💰 Ingresos: ${ingresos:,.0f}<br>
-                    🏦 Activos: ${activos:,.0f}<br>
-                    📋 Monto crédito: ${monto_credito:,.0f}
-                </div>
-
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.metric(
+                label="💰 Ingresos",
+                value=f"${ingresos:,.0f}"
+            )
+        
+        with col2:
+            st.metric(
+                label="🏦 Activos",
+                value=f"${activos:,.0f}"
+            )
+        
+        with col3:
+            st.metric(
+                label="📋 Monto crédito",
+                value=f"${monto_credito:,.0f}"
+            )
