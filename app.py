@@ -218,7 +218,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.subheader("Reglas de Clasificación")
 
 condiciones = pd.DataFrame(
     [
