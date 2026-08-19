@@ -444,7 +444,7 @@ with st.container(border=True):
     with col3:
 
         st.markdown(
-            '<div class="label-calculadora">Monto Crédito (Opcional)</div>',
+            '<div class="label-calculadora">Monto Crédito (Aplica para evaluar Mipymes)</div>',
             unsafe_allow_html=True
         )
 
