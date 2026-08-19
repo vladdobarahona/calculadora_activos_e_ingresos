@@ -273,6 +273,8 @@ condiciones = pd.DataFrame(
     ]
 )
 
+st.subheader("📋 Reglas de Clasificación")
+
 st.markdown(
     f"""
     <div class="reglas">
