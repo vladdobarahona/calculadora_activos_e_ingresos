@@ -320,6 +320,36 @@ st.markdown(
     unsafe_allow_html=True
 )
 # ----------------------------------------------------
+# Estilo de la Calculadora
+# ----------------------------------------------------
+st.markdown("""
+<style>
+
+/* Valor principal dentro del input */
+div[data-testid="stNumberInput"] input {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #002646 !important;
+}
+
+/* Botones + y - */
+div[data-testid="stNumberInput"] button {
+    font-size: 22px !important;
+    font-weight: bold !important;
+}
+
+/* Etiquetas de los campos */
+.label-calculadora {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(120,154,61);
+    margin-bottom: 10px;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+# ----------------------------------------------------
 # Tarjeta de la Calculadora
 # ----------------------------------------------------
 with st.container(border=True):
@@ -328,7 +358,7 @@ with st.container(border=True):
     <h1 style="
         font-size:38px;
         color:#edb946;
-        margin-bottom:20px;
+        margin-bottom:25px;
     ">
     🧮 Calculadora
     </h1>
@@ -337,8 +367,9 @@ with st.container(border=True):
     col1, col2, col3 = st.columns(3)
 
     with col1:
+
         st.markdown(
-            '<div style="font-size:16px;font-weight:600;">Ingresos Brutos Anuales</div>',
+            '<div class="label-calculadora">Ingresos Brutos Anuales</div>',
             unsafe_allow_html=True
         )
 
@@ -350,23 +381,10 @@ with st.container(border=True):
             label_visibility="collapsed"
         )
 
-        st.markdown(
-            f"""
-            <div style="
-                font-size:20px;
-                font-weight:600;
-                margin-top:5px;
-                color:#002646;
-            ">
-                Ingresos: ${ingresos:,.0f}
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
     with col2:
+
         st.markdown(
-            '<div style="font-size:16px;font-weight:600;">Activos Totales</div>',
+            '<div class="label-calculadora">Activos Totales</div>',
             unsafe_allow_html=True
         )
 
@@ -378,23 +396,10 @@ with st.container(border=True):
             label_visibility="collapsed"
         )
 
-        st.markdown(
-            f"""
-            <div style="
-                font-size:20px;
-                font-weight:600;
-                margin-top:5px;
-                color:#002646;
-            ">
-                Activos: ${activos:,.0f}
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
     with col3:
+
         st.markdown(
-            '<div style="font-size:16px;font-weight:600;">Monto Crédito (Opcional)</div>',
+            '<div class="label-calculadora">Monto Crédito (Opcional)</div>',
             unsafe_allow_html=True
         )
 
@@ -404,20 +409,6 @@ with st.container(border=True):
             step=1_000_000.0,
             format="%.0f",
             label_visibility="collapsed"
-        )
-
-        st.markdown(
-            f"""
-            <div style="
-                font-size:20px;
-                font-weight:600;
-                margin-top:5px;
-                color:#002646;
-            ">
-                Monto crédito: ${monto_credito:,.0f}
-            </div>
-            """,
-            unsafe_allow_html=True
         )
 
     st.markdown("<br>", unsafe_allow_html=True)
@@ -436,5 +427,11 @@ with st.container(border=True):
         )
 
         st.success(
-            f"Clasificación obtenida: {resultado}"
+            f"""
+Clasificación obtenida: {resultado}
+
+💰 Ingresos: ${ingresos:,.0f}
+🏦 Activos: ${activos:,.0f}
+📋 Monto crédito: ${monto_credito:,.0f}
+"""
         )
