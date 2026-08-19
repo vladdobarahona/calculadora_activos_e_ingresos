@@ -320,152 +320,121 @@ st.markdown(
     unsafe_allow_html=True
 )
 # ----------------------------------------------------
-# Calculadora
+# Tarjeta de la Calculadora
 # ----------------------------------------------------
-st.markdown("""
-<div style="
-    border:1px solid #d9d9d9;
-    border-radius:10px;
-    padding:20px;
-    margin-top:15px;
-    margin-bottom:15px;
-">
-""", unsafe_allow_html=True)
+with st.container(border=True):
 
-
-
-st.markdown("""
-<h1 style="
-    font-size:38px;
-    color:#edb946;
-">
-🧮 Calculadora
-</h1>
-""", unsafe_allow_html=True)
-
-
-st.markdown("""
-<style>
-div[data-testid="stNumberInput"] input {
-    font-size: 20px !important;
-    font-weight: 600 !important;
-}
-
-div[data-testid="stNumberInput"] button {
-    font-size: 20px !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-
-    st.markdown(
-    '<div style="font-size:16px;font-weight:600;">Ingresos Brutos Anuales</div>',
-    unsafe_allow_html=True
-    )
-    ingresos = st.number_input(
-        "Ingresos",
-        min_value=0.0,
-        step=1_000_000.0,
-        format="%.0f",
-        label_visibility="collapsed"
-    )
-
-    st.markdown(
-    f"""
-    <div style="
-        font-size:20px;
-        font-weight:600;
-        margin-top:5px;
-        color:#002646;
+    st.markdown("""
+    <h1 style="
+        font-size:38px;
+        color:#edb946;
+        margin-bottom:20px;
     ">
-        Ingresos: ${ingresos:,.0f}
-    </div>
-    """,
-    unsafe_allow_html=True
-    )
+    🧮 Calculadora
+    </h1>
+    """, unsafe_allow_html=True)
 
-with col2:
-    st.markdown(
-        '<div style="font-size:16px;font-weight:600;">Activos Totales</div>',
-        unsafe_allow_html=True
-    )
-    activos = st.number_input(
-        "Activos",
-        min_value=0.0,
-        step=1_000_000.0,
-        format="%.0f",
-        label_visibility="collapsed"
-    )
-    st.markdown(
-    f"""
-    <div style="
-        font-size:20px;
-        font-weight:600;
-        margin-top:5px;
-        color:#002646;
-    ">
-        Activos: ${activos:,.0f}
-    </div>
-    """,
-    unsafe_allow_html=True
-    )
+    col1, col2, col3 = st.columns(3)
 
-with col3:
-    st.markdown(
-        '<div style="font-size:16px;font-weight:600;">Monto Crédito (Opcional)</div>',
-        unsafe_allow_html=True
-    )
-    monto_credito = st.number_input(
-        "Monto",
-        min_value=0.0,
-        step=1_000_000.0,
-        format="%.0f",
-        label_visibility="collapsed"
-    )
+    with col1:
+        st.markdown(
+            '<div style="font-size:16px;font-weight:600;">Ingresos Brutos Anuales</div>',
+            unsafe_allow_html=True
+        )
 
-    st.markdown(
-    f"""
-    <div style="
-        font-size:20px;
-        font-weight:600;
-        margin-top:5px;
-        color:#002646;
-    ">
-        Monto crédito: ${monto_credito:,.0f}
-    </div>
-    """,
-    unsafe_allow_html=True
-    )
+        ingresos = st.number_input(
+            "Ingresos",
+            min_value=0.0,
+            step=1_000_000.0,
+            format="%.0f",
+            label_visibility="collapsed"
+        )
 
-st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown(
+            f"""
+            <div style="
+                font-size:20px;
+                font-weight:600;
+                margin-top:5px;
+                color:#002646;
+            ">
+                Ingresos: ${ingresos:,.0f}
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
-st.markdown("<br><br>", unsafe_allow_html=True)
+    with col2:
+        st.markdown(
+            '<div style="font-size:16px;font-weight:600;">Activos Totales</div>',
+            unsafe_allow_html=True
+        )
 
-#if st.button("Clasificar"):
-if st.button(
-    "🚀 CLASIFICAR PRODUCTOR",
-    use_container_width=True
+        activos = st.number_input(
+            "Activos",
+            min_value=0.0,
+            step=1_000_000.0,
+            format="%.0f",
+            label_visibility="collapsed"
+        )
+
+        st.markdown(
+            f"""
+            <div style="
+                font-size:20px;
+                font-weight:600;
+                margin-top:5px;
+                color:#002646;
+            ">
+                Activos: ${activos:,.0f}
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    with col3:
+        st.markdown(
+            '<div style="font-size:16px;font-weight:600;">Monto Crédito (Opcional)</div>',
+            unsafe_allow_html=True
+        )
+
+        monto_credito = st.number_input(
+            "Monto",
+            min_value=0.0,
+            step=1_000_000.0,
+            format="%.0f",
+            label_visibility="collapsed"
+        )
+
+        st.markdown(
+            f"""
+            <div style="
+                font-size:20px;
+                font-weight:600;
+                margin-top:5px;
+                color:#002646;
+            ">
+                Monto crédito: ${monto_credito:,.0f}
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    if st.button(
+        "🚀 CLASIFICAR PRODUCTOR",
+        use_container_width=True
     ):
-    
-    monto = (
-        None
-        if monto_credito == 0
-        else monto_credito
-    )
 
-    resultado = clasificar_productor(
-        ingresos,
-        activos,
-        monto
-    )
+        monto = None if monto_credito == 0 else monto_credito
 
-    st.success(
-    f"Clasificación obtenida: {resultado} |"
-    f"Ingresos: ${ingresos:,.0f} | "
-    f"Activos: ${activos:,.0f} | "
-    f"Monto crédito: ${monto_credito:,.0f}"
-    )
+        resultado = clasificar_productor(
+            ingresos,
+            activos,
+            monto
+        )
 
+        st.success(
+            f"Clasificación obtenida: {resultado}"
+        )
