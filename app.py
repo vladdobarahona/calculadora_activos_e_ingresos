@@ -484,17 +484,17 @@ with st.container(border=True):
         st.markdown(
             f"""
             <div class="resultado-card">
-    
+        
                 <div class="resultado-titulo">
                     ✅ {resultado}
                 </div>
-    
+        
                 <div class="resultado-info">
                     💰 Ingresos: ${ingresos:,.0f}<br>
                     🏦 Activos: ${activos:,.0f}<br>
                     📋 Monto crédito: ${monto_credito:,.0f}
                 </div>
-    
+        
             </div>
             """,
             unsafe_allow_html=True
