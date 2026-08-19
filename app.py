@@ -407,7 +407,7 @@ with col3:
     """,
     unsafe_allow_html=True
     )
-#st.markdown("</div>", unsafe_allow_html=True)
+st.markdown("</div>", unsafe_allow_html=True)
 
 if st.button("Clasificar"):
 
