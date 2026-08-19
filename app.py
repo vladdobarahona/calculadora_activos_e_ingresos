@@ -207,7 +207,7 @@ st.markdown("""
 }
 
 .reglas th {
-    font-size: 22px;
+    font-size: 18;
     font-weight: bold;
     text-align: center;
 }
