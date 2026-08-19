@@ -322,7 +322,7 @@ st.markdown(
 
 
 # ----------------------------------------------------
-# Estilo de la Calculadora
+# Estilos de la Calculadora y Resultado
 # ----------------------------------------------------
 st.markdown("""
 <style>
@@ -340,7 +340,7 @@ div[data-testid="stNumberInput"] button {
     font-weight: bold !important;
 }
 
-/* Etiquetas */
+/* Etiquetas de los campos */
 .label-calculadora {
     font-size: 18px;
     font-weight: 600;
@@ -348,31 +348,32 @@ div[data-testid="stNumberInput"] button {
     margin-bottom: 10px;
 }
 
-/* Tarjeta resultado */
-.resultado-clasificacion {
+/* Resultado */
+.resultado-card {
     background-color: #eef7ec;
     border-left: 8px solid rgb(120,154,61);
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 25px;
     margin-top: 20px;
 }
 
 .resultado-titulo {
-    font-size: 30px;
+    font-size: 36px;
     font-weight: 700;
     color: rgb(120,154,61);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.resultado-detalle {
-    font-size: 18px;
-    color: #002646;
+.resultado-info {
+    font-size: 22px;
     font-weight: 600;
-    line-height: 1.8;
+    color: #002646;
+    line-height: 2;
 }
 
 </style>
 """, unsafe_allow_html=True)
+
 
 # ----------------------------------------------------
 # Tarjeta de la Calculadora
@@ -385,7 +386,7 @@ with st.container(border=True):
         color:#edb946;
         margin-bottom:25px;
     ">
-    🧮 Calculadora
+        🧮 Calculadora
     </h1>
     """, unsafe_allow_html=True)
 
@@ -437,66 +438,35 @@ with st.container(border=True):
         )
 
     st.markdown("<br>", unsafe_allow_html=True)
-    # ----------------------------------------------------
-    # Resultado de la clasificación
-    # ----------------------------------------------------
-    st.markdown("""
-    <style>
-    
-    .resultado-card {
-        background-color: #eef7ec;
-        border-left: 8px solid rgb(120,154,61);
-        border-radius: 12px;
-        padding: 25px;
-        margin-top: 20px;
-    }
-    
-    .resultado-titulo {
-        font-size: 36px;
-        font-weight: 700;
-        color: rgb(120,154,61);
-        margin-bottom: 15px;
-    }
-    
-    .resultado-info {
-        font-size: 22px;
-        font-weight: 600;
-        color: #002646;
-        line-height: 2;
-    }
-    
-    </style>
-    """, unsafe_allow_html=True)
-    
+
     if st.button(
         "🚀 CLASIFICAR PRODUCTOR",
         use_container_width=True
     ):
-    
+
         monto = None if monto_credito == 0 else monto_credito
-    
+
         resultado = clasificar_productor(
             ingresos,
             activos,
             monto
         )
-    
+
         st.markdown(
             f"""
             <div class="resultado-card">
-        
+
                 <div class="resultado-titulo">
                     ✅ {resultado}
                 </div>
-        
+
                 <div class="resultado-info">
                     💰 Ingresos: ${ingresos:,.0f}<br>
                     🏦 Activos: ${activos:,.0f}<br>
                     📋 Monto crédito: ${monto_credito:,.0f}
                 </div>
-        
+
             </div>
             """,
             unsafe_allow_html=True
         )
-    
