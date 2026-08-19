@@ -197,34 +197,6 @@ monto_alto_Mipymes_rurales = 2968 * uvb
 
 
 # ----------------------------------------------------
-# Tabla resumen
-# ----------------------------------------------------
-st.subheader(
-    f"Resumen de umbrales - {data['title']}"
-)
-
-tabla = pd.DataFrame(
-    [
-        ["Ingreso Bajo", f"${ingreso_bajo:,.0f}"],
-        ["Ingreso Medio", f"${ingreso_medio:,.0f}"],
-        ["Ingreso Alto", f"${ingreso_alto:,.0f}"],
-        ["Activo Bajo", f"${activo_bajo:,.0f}"],
-        ["Activo Medio", f"${activo_medio:,.0f}"],
-        ["Ingreso MIPYMES Rurales", f"${ingreso_Mipymes_rurales:,.0f}"],
-        ["Activo MIPYMES Rurales", f"${activo_Mipymes_rurales:,.0f}"],
-        ["Monto mínimo MIPYMES", f"${monto_bajo_Mipymes_rurales:,.0f}"],
-        ["Monto máximo MIPYMES", f"${monto_alto_Mipymes_rurales:,.0f}"],
-    ],
-    columns=["Concepto", "Valor"]
-)
-
-st.dataframe(
-    tabla,
-    use_container_width=True,
-    hide_index=True
-)
-
-# ----------------------------------------------------
 # Condiciones
 # ----------------------------------------------------
 st.subheader("Reglas de Clasificación")
@@ -233,26 +205,53 @@ condiciones = pd.DataFrame(
     [
         [
             "Pequeño Productor de Ingresos Bajos",
-            f"Ingresos ≤ ${ingreso_bajo:,.0f} y Activos ≤ ${activo_bajo:,.0f}"
+            f"≤ ${ingreso_bajo:,.0f}",
+            f"≤ ${activo_bajo:,.0f}",
+            "No aplica"
         ],
         [
             "Pequeño Productor",
-            f"Ingresos > ${ingreso_bajo:,.0f} y ≤ ${ingreso_medio:,.0f} con Activos ≤ ${activo_bajo:,.0f}"
+            f"> ${ingreso_bajo:,.0f} y ≤ ${ingreso_medio:,.0f}",
+            f"≤ ${activo_bajo:,.0f}",
+            "No aplica"
         ],
         [
             "Mediano Productor",
-            "Ingresos o activos dentro de rangos medios"
+            f"> ${ingreso_medio:,.0f} y ≤ ${ingreso_alto:,.0f}",
+            f"≤ ${activo_medio:,.0f}",
+            "No aplica"
+        ],
+        [
+            "Mediano Productor",
+            f"≤ ${ingreso_medio:,.0f}",
+            f"> ${activo_bajo:,.0f} y ≤ ${activo_medio:,.0f}",
+            "No aplica"
         ],
         [
             "Gran Productor",
-            "Ingresos o activos superiores a los límites medios"
+            f"> ${ingreso_alto:,.0f}",
+            "Cualquiera",
+            "No aplica"
+        ],
+        [
+            "Gran Productor",
+            f"≤ ${ingreso_alto:,.0f}",
+            f"> ${activo_medio:,.0f}",
+            "No aplica"
         ],
         [
             "MIPYMES Rurales Microempresa",
-            f"Ingresos ≤ ${ingreso_Mipymes_rurales:,.0f}, Activos ≤ ${activo_Mipymes_rurales:,.0f} y Crédito entre ${monto_bajo_Mipymes_rurales:,.0f} y ${monto_alto_Mipymes_rurales:,.0f}"
+            f"≤ ${ingreso_Mipymes_rurales:,.0f}",
+            f"≤ ${activo_Mipymes_rurales:,.0f}",
+            f"> ${monto_bajo_Mipymes_rurales:,.0f} y < ${monto_alto_Mipymes_rurales:,.0f}"
         ]
     ],
-    columns=["Clasificación", "Condición"]
+    columns=[
+        "Clasificación",
+        "Ingresos",
+        "Activos",
+        "Monto Crédito"
+    ]
 )
 
 st.dataframe(
@@ -260,6 +259,7 @@ st.dataframe(
     use_container_width=True,
     hide_index=True
 )
+
 
 # ----------------------------------------------------
 # Calculadora
