@@ -344,7 +344,7 @@ with col1:
     st.markdown(
     f"""
     <div style="
-        font-size:16px;
+        font-size:20px;
         font-weight:600;
         margin-top:5px;
         color:#002646;
@@ -370,7 +370,7 @@ with col2:
     st.markdown(
     f"""
     <div style="
-        font-size:16px;
+        font-size:20px;
         font-weight:600;
         margin-top:5px;
         color:#002646;
@@ -397,7 +397,7 @@ with col3:
     st.markdown(
     f"""
     <div style="
-        font-size:16px;
+        font-size:20px;
         font-weight:600;
         margin-top:5px;
         color:#002646;
