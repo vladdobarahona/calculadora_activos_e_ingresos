@@ -202,18 +202,18 @@ monto_alto_Mipymes_rurales = 2968 * uvb
 st.markdown("""
 <style>
 .reglas table {
-    font-size: 20px;
+    font-size: 18px;
     width: 100%;
 }
 
 .reglas th {
-    font-size: 18;
+    font-size: 16;
     font-weight: bold;
     text-align: center;
 }
 
 .reglas td {
-    padding: 12px;
+    padding: 10px;
 }
 </style>
 """, unsafe_allow_html=True)
